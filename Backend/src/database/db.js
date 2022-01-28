@@ -26,7 +26,7 @@ sequelize.models = Object.fromEntries(mayusculaModelos);
 // Relaciones
 const { User, Post } = sequelize.models;
 
-User.hasMany(Post, {foreignKey: 'user_id'}); // Un usuario puede tener muchos post
+User.hasMany(Post, { foreignKey: 'user_id' }); // Un usuario puede tener muchos post
 Post.belongsTo(User); // El post solo pertenece a un usuario
 
 
