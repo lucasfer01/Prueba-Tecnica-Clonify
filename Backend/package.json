@@ -18,6 +18,9 @@
   },
   "homepage": "https://github.com/lucasfer01/Prueba-Tecnica-Clonify#readme",
   "dependencies": {
+    "dotenv": "^14.3.2",
+    "express": "^4.17.2",
+    "morgan": "^1.10.0",
     "nodemon": "^2.0.15"
   }
 }
