@@ -15,6 +15,14 @@ module.exports = (sequelize) => {
             type: DataTypes.INTEGER, // Tambien va a ser un entero,
             allowNull: false, // Le indicamos que esta campo NO puede estar vacio
             unique: true // Le indicamos que este campo no puede estar repetido
+        },
+        user_name: {
+            type: DataTypes.STRING(65), // Ponemos un limite de caracteres
+            allowNull: false // No puede estar vacio
+        },
+        user_isActive: { // Creamos este campo para no tener que eliminar los registros, evitando un posible fallo en las relaciones
+            type: DataTypes.BOOLEAN,
+            defaultValue: true
         }
     })
 }
