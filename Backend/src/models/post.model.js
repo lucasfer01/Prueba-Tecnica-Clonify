@@ -18,6 +18,10 @@ module.exports = (sequelize) => {
         post_description: {
             type: DataTypes.TEXT, // Dejamos que usuario pueda escribir la cantidad que guste
             allowNull: false, // Indicamos que no puede ser null
+        },
+        post_image: {
+            type: DataTypes.ARRAY(DataTypes.STRING),
+            defaultValue: []
         }
     })
 }
