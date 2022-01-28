@@ -1,0 +1,23 @@
+{
+  "name": "prueba-tecnica-clonify",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon ./index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lucasfer01/Prueba-Tecnica-Clonify.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/lucasfer01/Prueba-Tecnica-Clonify/issues"
+  },
+  "homepage": "https://github.com/lucasfer01/Prueba-Tecnica-Clonify#readme",
+  "dependencies": {
+    "nodemon": "^2.0.15"
+  }
+}
