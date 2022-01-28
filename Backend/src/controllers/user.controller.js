@@ -62,9 +62,8 @@ const buscarUsuarioById = (req, res) => {
 
     // Buscamos el usuario
     User.findOne({
-        where: { // Buscamo por id y solo lo traeremos si el usuario no fue "borrado"
-            user_id: userId,
-            user_isActive: true
+        where: { // Buscamo por id
+            user_id: userId
         },
         include: [{
             required: false, // Puede ser null
@@ -110,10 +109,33 @@ const editarUsuario = (req, res) => {
         .catch(error => res.status(500).json({error: 'Ha ocurrido un error inesperado'})); // En caso de que ocurra un error lo notificamos
 }
 
+// Eliminar usuarios
+const eliminarUsuarios = (req,res) => {
+    // Recibimos el userId por req.params
+    const { userId } = req.params;
+
+    // Buscamos al usuario por id
+    User.findByPk(userId)
+        .then(usuarioEncontrado => {
+            // Verificamos si lo encontró
+            if(!usuarioEncontrado) { // Si no lo encontró...
+                return res.status(404).json({error: 'Usuario no encontrado'}); // Lo notificamos con un mensajey status code 404
+            }
+
+            // Si lo encontró lo "borramos"
+            usuarioEncontrado.update({ // Le actualizamos el campo user_isActive al contrario
+                user_isActive: !usuarioEncontrado.user_isActive
+            })
+            .then(response => res.json({exito: 'Usuario borrado correctamente'})) // Si salio todo bien lo notificamos
+        })
+        .catch(error => res.status(500).json({error: 'Ha ocurrido un error inesperado'})); // Si ocurre algun error lo notificamos
+}
+
 // Exportamos las funciones
 module.exports = {
     crearUsuario,
     mostrarUsuarios,
     buscarUsuarioById,
-    editarUsuario
+    editarUsuario,
+    eliminarUsuarios
 }
