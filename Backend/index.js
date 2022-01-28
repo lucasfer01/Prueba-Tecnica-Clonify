@@ -25,6 +25,6 @@ app.listen(PORT, () => {
 
     // Conectar a base de datos
     sequelize.sync({ force: true })
-             .then(() => console.log(`Conectado correctamente a DB ${process.env.POSTGRES_DBNAME}`)) // Si la conexion es exitosa
-             .catch(error => console.log({ error: error })); // Si ocurre algun error
+        .then(() => console.log(`Conectado correctamente a DB ${process.env.POSTGRES_DBNAME}`)) // Si la conexion es exitosa
+        .catch(error => console.log({ error: error })); // Si ocurre algun error
 });

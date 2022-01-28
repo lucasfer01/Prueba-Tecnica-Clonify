@@ -20,7 +20,7 @@ const crearUsuario = (req, res) => {
             }
             // Si no encontro a un usuario creamos el registro
             return User.create(dataUsuario)
-                .then(usuarioCreado => res.json(usuarioCreado)) // Retornamos el objeto en formato json
+                .then(usuarioCreado => res.status(201).json(usuarioCreado)) // Retornamos el objeto en formato json
         })
         .catch(error => res.status(500).json({ error: 'Ha ocurrido un error inesperado' })); // Si ocurre algun error enviamos un mensaje
 }
@@ -34,6 +34,9 @@ const mostrarUsuarios = (req, res) => {
             model: Post, // Modelo
             where: { // Solo los post que no fueron "Borrados"
                 post_isActive: true
+            },
+            attributes: { // Excluimos estos campos solo cuando traemos todos los usuarios
+                exclude: ['createdAt', 'updatedAt', "userUserId"]
             }
         }],
         where: { // Solo los usuarios que no fueron "Borrados"
@@ -70,6 +73,9 @@ const buscarUsuarioById = (req, res) => {
             model: Post, // Modelo
             where: { // Solo los post que no fueron "Borrados"
                 post_isActive: true
+            },
+            attributes: {
+                exclude: ["userUserId"]
             }
         }],
         attributes: { // Excluimos los atributos createdAt y updatedAt ya que no los veo utiles por el momento
@@ -104,13 +110,13 @@ const editarUsuario = (req, res) => {
 
             // Si lo encontró lo editamos
             usuarioEncontrado.update(dataUser)
-                             .then(usuarioEditado => res.json(usuarioEditado)) // Enviamos el usuario editado
+                .then(usuarioEditado => res.json(usuarioEditado)) // Enviamos el usuario editado
         })
-        .catch(error => res.status(500).json({error: 'Ha ocurrido un error inesperado'})); // En caso de que ocurra un error lo notificamos
+        .catch(error => res.status(500).json({ error: 'Ha ocurrido un error inesperado' })); // En caso de que ocurra un error lo notificamos
 }
 
 // Eliminar usuarios
-const eliminarUsuarios = (req,res) => {
+const eliminarUsuarios = (req, res) => {
     // Recibimos el userId por req.params
     const { userId } = req.params;
 
@@ -118,17 +124,17 @@ const eliminarUsuarios = (req,res) => {
     User.findByPk(userId)
         .then(usuarioEncontrado => {
             // Verificamos si lo encontró
-            if(!usuarioEncontrado) { // Si no lo encontró...
-                return res.status(404).json({error: 'Usuario no encontrado'}); // Lo notificamos con un mensajey status code 404
+            if (!usuarioEncontrado) { // Si no lo encontró...
+                return res.status(404).json({ error: 'Usuario no encontrado' }); // Lo notificamos con un mensajey status code 404
             }
 
             // Si lo encontró lo "borramos"
             usuarioEncontrado.update({ // Le actualizamos el campo user_isActive al contrario
                 user_isActive: !usuarioEncontrado.user_isActive
             })
-            .then(response => res.json({exito: 'Usuario borrado correctamente'})) // Si salio todo bien lo notificamos
+                .then(response => res.json({ exito: 'Usuario borrado correctamente' })) // Si salio todo bien lo notificamos
         })
-        .catch(error => res.status(500).json({error: 'Ha ocurrido un error inesperado'})); // Si ocurre algun error lo notificamos
+        .catch(error => res.status(500).json({ error: 'Ha ocurrido un error inesperado' })); // Si ocurre algun error lo notificamos
 }
 
 // Exportamos las funciones
