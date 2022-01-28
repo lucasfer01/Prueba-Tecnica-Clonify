@@ -2,11 +2,11 @@
 const { Router } = require('express');
 // Creamos Router
 const rutas = Router();
+// Routers
+const { userRoutes } = require('./user.routes');
 
 // rutas
-rutas.use('/user', (req, res) => {
-    res.send('funciona');
-})
+rutas.use('/user', userRoutes); // Rutas de usuario
 
 // Exportamos las rutas
 module.exports = {

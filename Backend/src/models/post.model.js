@@ -22,6 +22,10 @@ module.exports = (sequelize) => {
         post_image: {
             type: DataTypes.ARRAY(DataTypes.STRING),
             defaultValue: []
+        },
+        post_isActive: { // En vez de borrar seteamos este campo en false
+            type: DataTypes.BOOLEAN, // Tipo de dato booleano
+            defaultValue: true // el valor por defecto es true
         }
     })
 }
