@@ -88,9 +88,32 @@ const buscarUsuarioById = (req, res) => {
         .catch(error => res.status(500).json({ error: 'Ha ocurrido un error inesperado' })); // Si ocurre algun error lo notificamos
 }
 
+// Editar usuario
+const editarUsuario = (req, res) => {
+    // Recibimos el userId por req.params
+    const { userId } = req.params;
+    // Data a editar por req.body
+    const dataUser = req.body;
+
+    // Buscamos el usuario por el id
+    User.findByPk(userId)
+        .then(usuarioEncontrado => {
+            // Por las dudas verificamos que haya encontrado el usuario
+            if (!usuarioEncontrado) { // En caso de que no lo haya encontrado
+                return res.status(404).json({ error: 'Usuario no encontrado' }); // Enviamos un mensaje de error notificando que no se encontro el usuario
+            }
+
+            // Si lo encontró lo editamos
+            usuarioEncontrado.update(dataUser)
+                             .then(usuarioEditado => res.json(usuarioEditado)) // Enviamos el usuario editado
+        })
+        .catch(error => res.status(500).json({error: 'Ha ocurrido un error inesperado'})); // En caso de que ocurra un error lo notificamos
+}
+
 // Exportamos las funciones
 module.exports = {
     crearUsuario,
     mostrarUsuarios,
-    buscarUsuarioById
+    buscarUsuarioById,
+    editarUsuario
 }
