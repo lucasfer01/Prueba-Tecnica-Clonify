@@ -1,23 +1,40 @@
-import logo from './logo.svg';
-import './App.css';
+// React
+import React, { useEffect, useState } from 'react';
+// Axios
+import axios from 'axios';
+// Urls
+import { USER_BACK_URL } from './enviroment';
+// Rutas
+import { NotLoggedIn } from './Componentes/Rutas/NotLoggedIn/NotLoggedIn';
+import { LoggedIn } from './Componentes/Rutas/LoggedIn/LoggedIn';
 
 function App() {
+  // Estado usuarios
+  const [user, setUser] = useState(null); // Estado inicial: null
+
+  // UseEffect
+  useEffect(() => {
+    // Verificamos que haya un usuario en el localStorage
+    const userLocalStorage = window.localStorage.getItem('userSession');
+
+    if (userLocalStorage) {
+      // Guardamos el usuario del localStorage en una variable
+      const usuarioJSON = JSON.parse(userLocalStorage);
+
+      // Hacemos peticion al back con el id del usuario en localStorage
+      axios.get(`${USER_BACK_URL}/${usuarioJSON.user_id}`)
+        .then(usuario => setUser(usuario.data)) // Seteamos el estado de usuario con la respuesta
+        .catch(error => console.log(error));
+    }
+  }, []);
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      {user ? // Si el estado de user tienealgo significa que hay una sesion iniciada y puede acceder a las rutas
+        <LoggedIn />
+        :
+        // Si el estado es null se renderiza el componente de inicio de sesion
+        <NotLoggedIn />}
     </div>
   );
 }

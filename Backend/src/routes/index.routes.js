@@ -13,7 +13,7 @@ rutas.use('/user', userRoutes); // Rutas de usuario
 
 rutas.use('/post', postRoutes); // Rutas de post
 
-rutas.get('/auth-user', autentificacion); // Autentificar dni
+rutas.post('/auth-user', autentificacion); // Autentificar dni
 
 // Exportamos las rutas
 module.exports = {
