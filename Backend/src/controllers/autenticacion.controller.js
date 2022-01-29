@@ -20,7 +20,7 @@ const autentificacion = (req,res) => {
         }
 
         // Si lo encontro...
-        return res.json({auth: true, coockieDni: usuario.user_dni}); // Devolvemos un objeto indicando que auth es true y el dni del usuario para guardalo en las coockies
+        return res.json({auth: true, user: usuario}); // Devolvemos un objeto indicando que auth es true y el dni del usuario para guardalo en las coockies
     })
     .catch(error => res.status(500).json({error: 'Ha ocurrido un error inesperado'})); // Si ocurre algun error los notificamos
 }
