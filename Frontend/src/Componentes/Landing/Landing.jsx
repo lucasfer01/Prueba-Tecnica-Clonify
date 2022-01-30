@@ -4,8 +4,8 @@ import React, { useState } from 'react';
 import axios from 'axios';
 // Url
 import { AUTENTIFICACION_BACK_URL } from '../../enviroment';
-// React-router-dom
-import { Navigate } from 'react-router-dom';
+// Estilos
+import estilosLanding from './Landing.module.css';
 
 export function Landing() {
     // Estados inputs
@@ -46,18 +46,22 @@ export function Landing() {
     }
 
     return (
-        <div>
-            <form onSubmit={handleOnSubmit}>
-                <input type="text" name='user_dni' placeholder='D.N.I.' value={inputs.user_dni} onChange={handleOnChange} />
+        <div className={estilosLanding.contenedor}>
+            <div className={estilosLanding.contenedorForm}>
+                <form className={estilosLanding.form} onSubmit={handleOnSubmit}>
+                    <span>Ingrese su D.N.I.</span>
 
-                {error.isError && (
-                    <div>
-                        <span>{error.mensajeError}</span>
-                    </div>
-                )}
+                    <input className={estilosLanding.inputDniIniciarSesion} type="text" name='user_dni' placeholder='D.N.I.' value={inputs.user_dni} onChange={handleOnChange} />
 
-                <button type='submit'>Iniciar sesion</button>
-            </form>
+                    {error.isError && (
+                        <div>
+                            <span>{error.mensajeError}</span>
+                        </div>
+                    )}
+
+                    <button className={estilosLanding.botonIniciarSesion} type='submit'>Iniciar sesion</button>
+                </form>
+            </div>
         </div>
     );
 }
