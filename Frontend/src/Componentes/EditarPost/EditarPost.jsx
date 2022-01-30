@@ -14,6 +14,7 @@ import spinner from '../../media/spinner.jpg';
 import { subirImagenes } from '../../Cloudinary/Cloudinary.controller';
 // React-icons
 import { AiFillDelete } from 'react-icons/ai';
+import { IrAtras } from '../IrAtras/IrAtras';
 
 export function EditarPost() {
     // Obtenemos el id del post con useParams
@@ -194,6 +195,8 @@ export function EditarPost() {
                 <button className={estilosEditarPost.enviarFormularioBoton} disabled={!canSendForm} type='submit'>Actualizar post</button>
                 {!canSendForm && <h4>No se puede actualizar el post debido <br /> a un error en alguno de los campos</h4>}
             </form>
+
+            <IrAtras/>
         </div>
     )
     );

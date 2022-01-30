@@ -1,0 +1,12 @@
+.botonIrAtras {
+    width: 2.7rem;
+    height: 2.7rem;
+    border-radius: 50%;
+    background-color: #0096c7;
+    position: absolute;
+    top: 6rem;
+    left: 2rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

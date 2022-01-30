@@ -12,6 +12,7 @@ import estilosEditarPost from '../EditarPost/EditarPost.module.css';
 import { subirImagenes } from '../../Cloudinary/Cloudinary.controller';
 // React-icons
 import { AiFillDelete } from 'react-icons/ai';
+import { IrAtras } from '../IrAtras/IrAtras';
 
 export function AgregarPost() {
     // Estado data post
@@ -171,8 +172,15 @@ export function AgregarPost() {
                     {cargandoImagen && <h3>Cargando imagen...</h3>}
                 </div>
 
-                <button className={estilosEditarPost.enviarFormularioBoton} disabled={!canSendForm} type='submit'>Actualizar post</button>
+                <button className={estilosEditarPost.enviarFormularioBoton} 
+                        disabled={!canSendForm} 
+                        type='submit'>
+                            Actualizar post
+                </button>
+
                 {!canSendForm && <h4>No se puede actualizar el post debido <br /> a un error en alguno de los campos</h4>}
+
+                <IrAtras/>
             </form>
         </div>
     );
