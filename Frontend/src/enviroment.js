@@ -9,3 +9,6 @@ export const POST_BACK_URL = `${BACK_URL}/post`;
 
 // AUTENTIFICACION URL
 export const AUTENTIFICACION_BACK_URL = `${BACK_URL}/auth-user`;
+
+// Cloudinary
+export const CLOUDINARY_URL = 'https://api.cloudinary.com/v1_1/deelaazaw/image/upload'
