@@ -1,12 +1,14 @@
 // React
 import React, { useEffect, useState } from 'react';
-// Axios
-import axios from 'axios';
-// Urls
-import { USER_BACK_URL } from './enviroment';
 // Rutas
 import { NotLoggedIn } from './Componentes/Rutas/NotLoggedIn/NotLoggedIn';
 import { LoggedIn } from './Componentes/Rutas/LoggedIn/LoggedIn';
+// React-router-dom
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+// Componentes
+import { Landing } from './Componentes/Landing/Landing';
+import { PrivateRoutes } from './Componentes/Rutas/PrivateRoutes/PrivateRoutes';
+import { Navbar } from './Componentes/Navbar/Navbar';
 
 function App() {
   // Estado usuarios
@@ -15,26 +17,38 @@ function App() {
   // UseEffect
   useEffect(() => {
     // Verificamos que haya un usuario en el localStorage
-    const userLocalStorage = window.localStorage.getItem('userSession');
+    const userLocalStorage = window.localStorage.getItem('usuarioSesionActual');
 
+    // Si hay algo entonces hay un sesion iniciada
     if (userLocalStorage) {
-      // Guardamos el usuario del localStorage en una variable
-      const usuarioJSON = JSON.parse(userLocalStorage);
-
-      // Hacemos peticion al back con el id del usuario en localStorage
-      axios.get(`${USER_BACK_URL}/${usuarioJSON.user_id}`)
-        .then(usuario => setUser(usuario.data)) // Seteamos el estado de usuario con la respuesta
-        .catch(error => console.log(error));
+      // Seteamos el usuario en true
+      setUser(true);
     }
   }, []);
 
   return (
     <div className="App">
-      {user ? // Si el estado de user tienealgo significa que hay una sesion iniciada y puede acceder a las rutas
-        <LoggedIn />
-        :
-        // Si el estado es null se renderiza el componente de inicio de sesion
-        <NotLoggedIn />}
+      {/* Hacemos que el navbar se renderice en toda la aplicacion */}
+      <Navbar />
+
+      {/*------------------ Proteccion de rutas ----------------------*/}
+      <Router>
+        {/* Si no hay nada en el esatado user el usuario no esta autenticado */}
+        <Routes>
+          <Route path='/'
+            element={
+              <NotLoggedIn isAutenticated={user} >
+                <Landing />
+              </NotLoggedIn>} />
+
+          {/* Si hay algo en la estado user el usuario esta autenticado */}
+          <Route path='/*'
+            element={
+              <LoggedIn isAutenticated={user}>
+                <PrivateRoutes />
+              </LoggedIn>} />
+        </Routes>
+      </Router>
     </div>
   );
 }

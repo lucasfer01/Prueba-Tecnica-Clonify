@@ -1,0 +1,7 @@
+.contenedorPosts {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column-reverse;
+    padding-top: 20px;
+}
