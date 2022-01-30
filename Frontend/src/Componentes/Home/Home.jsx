@@ -40,14 +40,16 @@ export function Home() {
         </div>
     ) : (
         <div className={estilosHome.contenedor}>
-            {usuario.posts && usuario.posts.map(post => (
+            {usuario.posts.length ? usuario.posts.map(post => (
                 <div key={post.post_id}>
                     <Post titulo={post.post_title}
-                          descripcion={post.post_description}
-                          foto={post.post_image && post.post_image}
-                          id={post.post_id}/>
+                        descripcion={post.post_description}
+                        foto={post.post_image && post.post_image}
+                        id={post.post_id} />
                 </div>
-            ))}
+            )) : (
+                <h1 style={{textAlign:'center'}}>No hay<br/>posts creados</h1>
+            )}
         </div>
     ));
 }
