@@ -1,5 +1,7 @@
 // React
 import React, { useEffect, useState } from 'react';
+// React-router-dom
+import { useNavigate } from 'react-router-dom';
 // Loader
 import spinner from '../../media/spinner.jpg';
 // Estilos
@@ -10,12 +12,23 @@ import axios from 'axios';
 import { USER_BACK_URL } from '../../enviroment';
 // Componentes
 import { Post } from '../Post/Post';
+// React-icons
+import { AiOutlinePlus } from 'react-icons/ai';
 
 export function Home() {
     // Estado de usuario
     const [usuario, setUsuario] = useState(null);
     // Estado loader
     const [loader, setLoader] = useState(true);
+
+    // UseNavigate
+    const navigate = useNavigate();
+
+    // HandleOnClick
+    function handleOnClick() {
+        // Direccionamos al la ruta que renderiza el componente para crear un post
+        navigate('/crearPost');
+    }
 
     // UseEffect
     useEffect(() => {
@@ -48,8 +61,12 @@ export function Home() {
                         id={post.post_id} />
                 </div>
             )) : (
-                <h1 style={{textAlign:'center'}}>No hay<br/>posts creados</h1>
+                <h1 style={{ textAlign: 'center' }}>No hay<br />posts creados</h1>
             )}
+
+            <button onClick={handleOnClick} className={estilosHome.botonAgregarPost}>
+                <AiOutlinePlus fill='#fff' size='2rem' />
+            </button>
         </div>
     ));
 }
