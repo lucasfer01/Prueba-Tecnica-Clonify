@@ -18,6 +18,13 @@
   },
   "homepage": "https://github.com/lucasfer01/Prueba-Tecnica-Clonify#readme",
   "dependencies": {
-    "nodemon": "^2.0.15"
+    "cors": "^2.8.5",
+    "dotenv": "^14.3.2",
+    "express": "^4.17.2",
+    "morgan": "^1.10.0",
+    "nodemon": "^2.0.15",
+    "pg": "^8.7.1",
+    "pg-hstore": "^2.3.4",
+    "sequelize": "^6.14.1"
   }
 }

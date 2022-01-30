@@ -1,0 +1,76 @@
+.contenedorPost {
+    width: 30rem;
+    height: auto;
+    background-color: #ade8f4;
+    padding: 15px;
+    border-radius: 10px;
+    margin: 15px 0;
+    box-shadow: 1px 1px 6px rgba(0, 0, 0, .5);
+    position: relative;
+}
+
+.botonEditar {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 1.7rem;
+    height: 1.7rem;
+    border-radius: 10px;
+    display: none;
+    justify-content: center;
+    align-items: center;
+    border: none;
+    background-color: #fee440;
+}
+
+.botonEliminar {
+    position: absolute;
+    top: 1.7rem;
+    right: 0;
+    width: 1.7rem;
+    height: 1.7rem;
+    border-radius: 10px;
+    display: none;
+    justify-content: center;
+    align-items: center;
+    border: none;
+    background-color: #d00000;
+}
+
+.contenedorPost:hover .botonEditar {
+    display: flex;
+}
+
+.contenedorPost:hover .botonEliminar {
+    display: flex;
+}
+
+.contenedorComponenteConfirmacion {
+    padding-top: 1rem;
+}
+
+.contenedorBotonesConfirmacion {
+    display: flex;
+    align-items: center;
+    padding-top: .5rem;
+}
+
+.botonSi {
+    width: 2rem;
+    height: 2rem;
+    border: none;
+    border-radius: 10px;
+    box-shadow: 0 0 6px rgba(0, 0, 0, .5);
+    background-color: rgb(17, 236, 10);
+    margin-right: .5rem;
+}
+
+.botonCancelar {
+    width: 7rem;
+    height: 2rem;
+    border: none;
+    border-radius: 10px;
+    box-shadow: 0 0 6px rgba(0, 0, 0, .5);
+    background-color: rgb(236, 10, 10);
+    margin-right: .5rem;
+}
