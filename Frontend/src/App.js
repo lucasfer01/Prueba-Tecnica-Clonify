@@ -13,6 +13,8 @@ import { Navbar } from './Componentes/Navbar/Navbar';
 function App() {
   // Estado usuarios
   const [user, setUser] = useState(null); // Estado inicial: null
+  // Estado usuario navbar
+  const [usuarioNavbar, setUsuarioNavbar] = useState({ user_name: ''});
 
   // UseEffect
   useEffect(() => {
@@ -23,13 +25,19 @@ function App() {
     if (userLocalStorage) {
       // Seteamos el usuario en true
       setUser(true);
+
+      // Seteamos el usuario navbar con el nombre y el id para renderizarlos
+      setUsuarioNavbar({
+        ...usuarioNavbar, // Copiamos el estado actual
+        user_name: JSON.parse(userLocalStorage).user_name // Parseamos el nombre
+      })
     }
   }, []);
 
   return (
     <div className="App">
       {/* Hacemos que el navbar se renderice en toda la aplicacion */}
-      <Navbar />
+      <Navbar nombre={usuarioNavbar.user_name && usuarioNavbar.user_name}/>
 
       {/*------------------ Proteccion de rutas ----------------------*/}
       <Router>
