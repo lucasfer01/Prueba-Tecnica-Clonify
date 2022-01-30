@@ -8,12 +8,91 @@
     box-shadow: 0 0 6px rgba(0, 0, 0, .7);
 }
 
+.contenedorContenido {
+    height: 100%;
+    width: 95%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.contenedorImage {
+    width: 30%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.contenedorLogout {
+    width: 30%;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.botonLogout {
+    background: none;
+    border: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: all .3s;
+}
+
+.botonLogout:hover {
+    transform: scale(.9);
+}
+
+.contenedorMensajeBienvenida {
+    width: 30%;
+}
+
+.mensajeBienvenida {
+    font-weight: 100;
+}
+
+.mensajeBienvenida span {
+    font-weight: 700;
+    letter-spacing: 2px;
+}
+
 .logo {
     height: 70%;
-    padding-left: 1rem;
     transition: all .3s;
+    filter: drop-shadow(0 0 2px rgba(0,0,0,.5));
 }
 
 .logo:hover {
     transform: scale(1.1);
+}
+
+.contenedorConfirmacionLogout {
+    position: absolute;
+    top: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(87, 85, 85, 0.883);
+    z-index: 100;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.cartelConfirmacion {
+    width: 25%;
+    height: 30%;
+    background-color: #fff;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-direction: column;
+    border-radius: 10px;
+}
+
+.contenedorBotones {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: column;
+    height: 45%;
 }
