@@ -80,9 +80,9 @@ export function Navbar({ nombre }) {
 
                         <div className={estilosNavbar.contenedorBotones}>
                             <div>
-                                <button onClick={() => { handleOnClickDesicion(true) }}>SI</button>
+                                <button className={estilosNavbar.botonSi} onClick={() => { handleOnClickDesicion(true) }}>SI</button>
 
-                                <button onClick={() => { handleOnClickDesicion(false) }}>CANCELAR</button>
+                                <button className={estilosNavbar.botonCancelar} onClick={() => { handleOnClickDesicion(false) }}>CANCELAR</button>
                             </div>
 
                             {loader ? <img src={spinner} width='30px' alt='Loader' /> : ''}
