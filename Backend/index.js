@@ -14,6 +14,8 @@ const morgan = require('morgan');
 const { sequelize } = require('./src/database/db');
 // Cors
 const cors = require('cors');
+// Precarga de datos
+const { precargarDatos } = require('./src/controllers/database.controller');
 
 // Middleware
 app.use(cors());
@@ -28,6 +30,10 @@ app.listen(PORT, () => {
 
     // Conectar a base de datos
     sequelize.sync({ force: true })
-        .then(() => console.log(`Conectado correctamente a DB ${process.env.POSTGRES_DBNAME}`)) // Si la conexion es exitosa
+        .then(() => { // Si la conexion es exitosa
+            console.log(`Conectado correctamente a DB ${process.env.POSTGRES_DBNAME}`);
+            // Ejecutamos la funcion para precargar los datos
+            precargarDatos();
+        }) 
         .catch(error => console.log({ error: error })); // Si ocurre algun error
 });
