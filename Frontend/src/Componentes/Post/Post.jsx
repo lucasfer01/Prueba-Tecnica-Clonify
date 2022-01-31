@@ -53,11 +53,18 @@ export function Post({ titulo, descripcion, foto, id }) {
 
     return (
         <div className={estilosPost.contenedorPost}>
-            <h2>{titulo}</h2>
+            <div className={estilosPost.contenedorTitulo}>
+                <h2>{titulo}</h2>
+            </div>
 
-            <p>{descripcion}</p>
+            <div className={estilosPost.contenedorDescripcion}>
+                <p>{descripcion}</p>
+            </div>
 
-            {foto.length ? <img src={foto} width='90%' alt='Foto post' /> : ''}
+            <div className={estilosPost.contenedorImagen}>
+                {foto.length ? <img src={foto} width='90%' alt='Foto post' /> : ''}
+            </div>
+
 
             {/* botones editar y eliminar */}
             <button onClick={() => handleOnClickEditar(id)} className={estilosPost.botonEditar}>
@@ -75,7 +82,7 @@ export function Post({ titulo, descripcion, foto, id }) {
                     <div className={estilosPost.contenedorBotonesConfirmacion}>
                         <div>
                             <button className={estilosPost
-                            .botonSi} onClick={() => handleOnClickConfirmacion(true)}>SI</button>
+                                .botonSi} onClick={() => handleOnClickConfirmacion(true)}>SI</button>
 
                             <button className={estilosPost.botonCancelar} onClick={() => handleOnClickConfirmacion(false)}>CANCELAR</button>
                         </div>

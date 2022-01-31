@@ -7,6 +7,32 @@
     margin: 15px 0;
     box-shadow: 1px 1px 6px rgba(0, 0, 0, .5);
     position: relative;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+.contenedorTitulo {
+    width: 95%;
+    padding: 10px 0;
+    font-size: 20px;
+}
+
+.contenedorDescripcion {
+    width: 85%;
+}
+
+.contenedorDescripcion p {
+    text-align: justify;
+    font-size: 17px;
+}
+
+.contenedorImagen {
+    width: 90%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px 0;
 }
 
 .botonEditar {
@@ -47,6 +73,7 @@
 
 .contenedorComponenteConfirmacion {
     padding-top: 1rem;
+    width: 80%;
 }
 
 .contenedorBotonesConfirmacion {
