@@ -6,6 +6,8 @@ import axios from 'axios';
 import { AUTENTIFICACION_BACK_URL } from '../../enviroment';
 // Estilos
 import estilosLanding from './Landing.module.css';
+// Loader
+import spinner from '../../media/loaderConfirmacion.gif';
 
 export function Landing() {
     // Estados inputs
@@ -17,6 +19,8 @@ export function Landing() {
         isError: false,
         mensajeError: ''
     });
+    // Estado loader
+    const [loader, setLoader] = useState(false);
 
     // handleOnsubmit
     function handleOnSubmit(e) {
@@ -33,7 +37,13 @@ export function Landing() {
                 // Redireccionamos a home con este metodo para que se recargue la pagina y vuelva a verificar el localStorage
                 window.location.pathname = '/home';
             })
-            .catch(error => setError({ isError: true, mensajeError: 'El dni no pertenece a ningun usuario' })); // Seteamos el estado de error en true y le pasamos un mensaje de error
+            .catch(error => {
+                // Seteamos el estado de error en true y le pasamos un mensaje de error
+                setError({ isError: true, mensajeError: 'El dni no pertenece a ningun usuario' });
+
+                // Seteamos el loader en false
+                setLoader(false);
+            }); 
     }
 
     // handleOnChange
@@ -59,7 +69,12 @@ export function Landing() {
                         </div>
                     )}
 
-                    <button className={estilosLanding.botonIniciarSesion} type='submit'>Iniciar sesion</button>
+                    <div className={estilosLanding.contenedorBoton}>
+                    <button className={estilosLanding.botonIniciarSesion} type='submit' onClick={() => setLoader(true)}>Iniciar sesion</button>
+                    
+                    {loader && <img src={spinner} width='30px' alt='Loader'/>}
+                    </div>
+
                 </form>
             </div>
         </div>

@@ -8,7 +8,7 @@
 
 .contenedorForm {
     width: 30%;
-    height: 70% ;
+    height: 60%;
     background-color: #0096c7;
     display: flex;
     justify-content: center;
@@ -18,9 +18,9 @@
 }
 
 .form {
-    height: 80%;
+    height: 70%;
     display: flex;
-    justify-content: space-evenly;
+    justify-content: space-between;
     align-items: center;
     flex-direction: column;
 }
@@ -38,4 +38,12 @@
     border-radius: 10px;
     background-color: rgb(25, 204, 40);
     color: #fff;
+}
+
+.contenedorBoton {
+    height: 30%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: column;
 }
