@@ -41,3 +41,21 @@ Usuario 3
     Nombre: Lucas Fernandez
     Cantidad de post precargados: 0
 ````
+
+### Mejoras que agegaria
+
+````
+1) Autenticacion con alguna libreria como JWT o Firebase
+
+2) Inicio de sesion con usuario y contraseña(hasheada)
+
+3) Que los usuarios tengan perfiles
+
+4) Funcionalidad para que el usuario busque mediante una seacrhbar un usuario y pueda ver su perfil y sus posteos
+
+5) Poder comentar, reaccionar y compartir los posteos de los usuarios
+
+6) Una interaz para los usuarios que son admin
+
+
+````
