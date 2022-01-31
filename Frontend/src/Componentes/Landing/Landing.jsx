@@ -8,6 +8,7 @@ import { AUTENTIFICACION_BACK_URL } from '../../enviroment';
 import estilosLanding from './Landing.module.css';
 // Loader
 import spinner from '../../media/loaderConfirmacion.gif';
+import { CrearUsuario } from '../CrearUsuario/CrearUsuario';
 
 export function Landing() {
     // Estados inputs
@@ -21,11 +22,19 @@ export function Landing() {
     });
     // Estado loader
     const [loader, setLoader] = useState(false);
+    // Estado para crear o iniciar sesion
+    const [crearOIniciarSesion, setCrearOIniciarSesion] = useState({ mostrar: 'iniciar sesion' });
 
     // handleOnsubmit
     function handleOnSubmit(e) {
         // Prevenimos el enviado por defecto del formulario
         e.preventDefault();
+
+        // Si el estado esta vacio no hacer nada
+        if(!inputs.user_dni.length) return
+
+        // Seteamos el loader en true
+        setLoader(true)
 
         // Verificamos si el dni se encuentra en la base de datos
         axios.post(AUTENTIFICACION_BACK_URL, { userDni: inputs.user_dni })
@@ -43,7 +52,7 @@ export function Landing() {
 
                 // Seteamos el loader en false
                 setLoader(false);
-            }); 
+            });
     }
 
     // handleOnChange
@@ -58,24 +67,36 @@ export function Landing() {
     return (
         <div className={estilosLanding.contenedor}>
             <div className={estilosLanding.contenedorForm}>
-                <form className={estilosLanding.form} onSubmit={handleOnSubmit}>
-                    <span>Ingrese su D.N.I.</span>
+                {crearOIniciarSesion.mostrar === 'iniciar sesion' ? (
+                    <form className={estilosLanding.form} onSubmit={handleOnSubmit}>
+                        <span>Ingrese su D.N.I.</span>
 
-                    <input className={estilosLanding.inputDniIniciarSesion} type="text" name='user_dni' placeholder='D.N.I.' value={inputs.user_dni} onChange={handleOnChange} />
+                        <input className={estilosLanding.inputDniIniciarSesion} type="text" name='user_dni' placeholder='D.N.I.' value={inputs.user_dni} onChange={handleOnChange} />
 
-                    {error.isError && (
-                        <div>
-                            <span>{error.mensajeError}</span>
+                        {error.isError && (
+                            <div>
+                                <span>{error.mensajeError}</span>
+                            </div>
+                        )}
+
+                        <div className={estilosLanding.contenedorBoton}>
+                            <button className={estilosLanding.botonIniciarSesion} type='submit'>Iniciar sesion</button>
+
+                            {loader && <img src={spinner} width='30px' alt='Loader' />}
                         </div>
-                    )}
 
-                    <div className={estilosLanding.contenedorBoton}>
-                    <button className={estilosLanding.botonIniciarSesion} type='submit' onClick={() => setLoader(true)}>Iniciar sesion</button>
-                    
-                    {loader && <img src={spinner} width='30px' alt='Loader'/>}
-                    </div>
+                    </form>
+                ) : (
+                    <CrearUsuario/>
+                )}
+            </div>
 
-                </form>
+            <div>
+                {crearOIniciarSesion.mostrar === 'crear sesion' ? (
+                    <button className={estilosLanding.botonRegistrarIniciarsesion} onClick={() => setCrearOIniciarSesion({mostrar: 'iniciar sesion'})}>Iniciar sesion</button>
+                ) : (
+                    <button className={estilosLanding.botonRegistrarIniciarsesion} onClick={() => setCrearOIniciarSesion({mostrar: 'crear sesion'})}>Registrarse</button>
+                )}
             </div>
         </div>
     );

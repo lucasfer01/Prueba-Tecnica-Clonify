@@ -4,6 +4,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    flex-direction: column;
 }
 
 .contenedorForm {
@@ -15,6 +16,7 @@
     align-items: center;
     border-radius: 10px;
     box-shadow: 0 0 6px rgba(0, 0, 0, 0.5);
+    margin-bottom: 2rem;
 }
 
 .form {
@@ -23,6 +25,10 @@
     justify-content: space-between;
     align-items: center;
     flex-direction: column;
+}
+
+.form span {
+    font-weight: 700;
 }
 
 .inputDniIniciarSesion {
@@ -36,8 +42,8 @@
     padding: .5rem;
     border: none;
     border-radius: 10px;
-    background-color: rgb(25, 204, 40);
-    color: #fff;
+    background-color: rgb(95, 255, 47);
+    color: #000;
 }
 
 .contenedorBoton {
@@ -46,4 +52,13 @@
     justify-content: space-between;
     align-items: center;
     flex-direction: column;
+}
+
+.botonRegistrarIniciarsesion {
+    padding: 10px;
+    border: none;
+    border-radius: 10px;
+    background-color: rgb(65, 206, 225);
+    color: #fff;
+    font-weight: 700;
 }
