@@ -6,6 +6,7 @@
     align-items: center;
     flex-direction: column-reverse;
     position: relative;
+    padding-top: 1.5rem;
 }
 
 .botonAgregarPost {
