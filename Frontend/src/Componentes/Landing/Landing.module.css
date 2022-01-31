@@ -18,7 +18,7 @@
 }
 
 .form {
-    height: 70%;
+    height: 90%;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -41,7 +41,7 @@
 }
 
 .contenedorBoton {
-    height: 30%;
+    height: 35%;
     display: flex;
     justify-content: space-between;
     align-items: center;
