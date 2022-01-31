@@ -21,6 +21,11 @@ Paso 3
 
     Hacer npm install parado sobre la carpeta Backend y lo mismo pero en la carpeta Frontend
 
+paso 4
+    Parado en la carpeta Backend hacer npm start y dejar corriendo
+
+    En otra consola, parado sobre la carpeta Frontend hacer npm start para levantar la aplicacion
+
 ````
 
 ### Usuarios precargados
