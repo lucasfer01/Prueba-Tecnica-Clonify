@@ -96,3 +96,19 @@
     flex-direction: column;
     height: 45%;
 }
+
+.botonSi {
+    padding: .5rem;
+    background-color: greenyellow;
+    border-radius: 10px;
+    border: none;
+    margin: 0 5px;
+}
+
+.botonCancelar {
+    padding: .5rem;
+    background-color: rgb(255, 47, 47);
+    border-radius: 10px;
+    border: none;
+    margin: 0 5px;
+}
