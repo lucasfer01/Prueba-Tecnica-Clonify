@@ -1,0 +1,64 @@
+.formulario {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: column;
+    height: 95%;   
+    width: 100%;
+}
+
+.titulo {
+    font-size: 1.2rem;
+}
+
+.contenedorDni {
+    width: 80%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.contenedorDni label {
+    font-weight: 700;
+}
+
+.contenedorDni input {
+    border-radius: 10px;
+    border: none;
+    padding: 0 .5rem;
+}
+
+.contenedorBoton {
+    height: 45%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: column;
+}
+
+.botonRegistrarse {
+    padding: .2rem;
+    border: none;
+    border-radius: 10px;
+    background-color: rgb(95, 255, 47);
+}
+
+.contenedorError {
+    height: 30%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.contenedorSpinner {
+    height: 30%;
+}
+
+.contenedorErrorCrearUsuario {
+    position: absolute;
+    top: 12.5rem;
+    right: 2rem;
+    background-color: rgba(255, 0, 0, 0.698);
+    padding: .7rem;
+    border-radius: 10px;
+}
